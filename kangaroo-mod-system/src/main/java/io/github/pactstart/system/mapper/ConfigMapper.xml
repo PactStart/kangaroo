@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="io.github.pactstart.system.dao.ConfigMapper">
+    <resultMap id="BaseResultMap" type="io.github.pactstart.system.entity.Config">
+        <!--
+          WARNING - @mbg.generated
+        -->
+        <id column="id" jdbcType="INTEGER" property="id"/>
+        <result column="namespace" jdbcType="VARCHAR" property="namespace"/>
+        <result column="name" jdbcType="VARCHAR" property="name"/>
+        <result column="value" jdbcType="VARCHAR" property="value"/>
+        <result column="config_type" jdbcType="INTEGER" property="configType"/>
+        <result column="default_value" jdbcType="VARCHAR" property="defaultValue"/>
+        <result column="description" jdbcType="VARCHAR" property="description"/>
+        <result column="operator" jdbcType="VARCHAR" property="operator"/>
+        <result column="operate_time" jdbcType="TIMESTAMP" property="operateTime"/>
+        <result column="operate_ip" jdbcType="VARCHAR" property="operateIp"/>
+        <result column="json_schema" jdbcType="LONGVARCHAR" property="jsonSchema"/>
+    </resultMap>
+
+    <select id="query" parameterType="Map" resultMap="BaseResultMap">
+        select * from config
+        <where>
+            <if test="@Ognl@isNotEmpty(namespace)">
+                AND namespace = #{namespace}
+            </if>
+            <if test="@Ognl@isNotEmpty(name)">
+                AND name like concat('%',#{name},'%')
+            </if>
+            <if test="@Ognl@isNotEmpty(description)">
+                AND description like concat('%',#{description},'%')
+            </if>
+            <if test="configType != null">
+                AND config_type = #{configType}
+            </if>
+        </where>
+    </select>
+</mapper>

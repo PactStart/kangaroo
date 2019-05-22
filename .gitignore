@@ -1,0 +1,9 @@
+*.DS_Store
+*.iml
+*.idea
+target
+logs
+*.out
+*.log
+/ufang-code-generator/src/main/java/
+*.properties

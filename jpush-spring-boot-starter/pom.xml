@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <artifactId>kangaroo-parent</artifactId>
+        <groupId>io.github.pactstart</groupId>
+        <version>1.0.0</version>
+        <relativePath>../kangaroo-parent/pom.xml</relativePath>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+
+    <artifactId>jpush-spring-boot-starter</artifactId>
+    <version>1.0.1</version>
+
+    <name>jpush-spring-boot-starter</name>
+    <description>极光推送通过spring-boot-starter方式的封装，用于给移动端App推送通知。</description>
+
+    <dependencies>
+        <!-- jpush -->
+        <dependency>
+            <groupId>cn.jpush.api</groupId>
+            <artifactId>jpush-client</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.google.code.gson</groupId>
+            <artifactId>gson</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter</artifactId>
+        </dependency>
+        <!-- @ConfigurationProperties annotation processing (metadata for IDEs) -->
+        <!-- IDEA Eidtor : File->Settings->Build, Execution, Deployment->Compiler->Annotation Processors->Enable annonation processing钩上这个选项，这样的话就会自动在target/classes/META-INF中生成spring-configuration-metadata.json文件  -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-configuration-processor</artifactId>
+            <optional>true</optional>
+        </dependency>
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-api</artifactId>
+        </dependency>
+    </dependencies>
+</project>

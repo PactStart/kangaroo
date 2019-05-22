@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="io.github.pactstart.system.dao.SysVersionMapper">
+    <resultMap id="BaseResultMap" type="io.github.pactstart.system.entity.SysVersion">
+        <!--
+          WARNING - @mbg.generated
+        -->
+        <id column="id" jdbcType="INTEGER" property="id"/>
+        <result column="status" jdbcType="INTEGER" property="status"/>
+        <result column="version_owner" jdbcType="VARCHAR" property="versionOwner"/>
+        <result column="platform" jdbcType="VARCHAR" property="platform"/>
+        <result column="version_name" jdbcType="VARCHAR" property="versionName"/>
+        <result column="version_seq" jdbcType="INTEGER" property="versionSeq"/>
+        <result column="git_tag" jdbcType="VARCHAR" property="gitTag"/>
+        <result column="compatible" jdbcType="BIT" property="compatible"/>
+        <result column="force_update" jdbcType="BIT" property="forceUpdate"/>
+        <result column="version_summary" jdbcType="VARCHAR" property="versionSummary"/>
+        <result column="version_detail" jdbcType="VARCHAR" property="versionDetail"/>
+        <result column="version_time" jdbcType="TIMESTAMP" property="versionTime"/>
+        <result column="download_url" jdbcType="VARCHAR" property="downloadUrl"/>
+        <result column="attachs" jdbcType="VARCHAR" property="attachs"/>
+        <result column="operator" jdbcType="VARCHAR" property="operator"/>
+        <result column="operate_time" jdbcType="TIMESTAMP" property="operateTime"/>
+    </resultMap>
+
+    <select id="query" parameterType="Map" resultMap="BaseResultMap">
+        select * from sys_version
+        <where>
+            <if test="@Ognl@isNotEmpty(versionOwner)">
+                AND version_owner = #{versionOwner}
+            </if>
+            <if test="@Ognl@isNotEmpty(platform)">
+                AND platform = #{platform}
+            </if>
+            <if test="status != null">
+                AND status = #{status}
+            </if>
+        </where>
+        order by version_seq desc
+    </select>
+
+</mapper>

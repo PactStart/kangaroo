@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="io.github.pactstart.system.dao.SysRoleAclMapper">
+    <resultMap id="BaseResultMap" type="io.github.pactstart.system.entity.SysRoleAcl">
+        <!--
+          WARNING - @mbg.generated
+        -->
+        <id column="id" jdbcType="INTEGER" property="id"/>
+        <result column="role_id" jdbcType="INTEGER" property="roleId"/>
+        <result column="acl_id" jdbcType="INTEGER" property="aclId"/>
+        <result column="operator" jdbcType="VARCHAR" property="operator"/>
+        <result column="operate_time" jdbcType="TIMESTAMP" property="operateTime"/>
+        <result column="operate_ip" jdbcType="VARCHAR" property="operateIp"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        id, role_id, acl_id, operator, operate_time, operate_ip
+    </sql>
+
+    <select id="getAclIdListByRoleIdList" parameterType="map" resultType="int">
+        SELECT acl_id
+        FROM sys_role_acl
+        WHERE role_id in
+        <foreach collection="roleIdList" item="roleId" open="(" close=")" separator=",">
+            #{roleId}
+        </foreach>
+    </select>
+
+    <delete id="deleteByRoleId" parameterType="int">
+        DELETE FROM sys_role_acl
+        WHERE role_id = #{roleId}
+    </delete>
+
+    <insert id="batchInsert" parameterType="map">
+        insert into sys_role_acl (role_id, acl_id, operator, operate_time, operate_ip)
+        values
+        <foreach collection="roleAclList" item="roleAcl" separator=",">
+            (#{roleAcl.roleId}, #{roleAcl.aclId}, #{roleAcl.operator}, #{roleAcl.operateTime}, #{roleAcl.operateIp})
+        </foreach>
+    </insert>
+
+    <select id="getRoleIdListByAclId" parameterType="int" resultType="int">
+        SELECT role_id
+        FROM sys_role_acl
+        WHERE acl_id = #{aclId}
+    </select>
+
+</mapper>

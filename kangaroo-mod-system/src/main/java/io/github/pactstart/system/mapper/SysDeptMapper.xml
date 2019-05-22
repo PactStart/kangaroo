@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="io.github.pactstart.system.dao.SysDeptMapper">
+    <resultMap id="BaseResultMap" type="io.github.pactstart.system.entity.SysDept">
+        <!--
+          WARNING - @mbg.generated
+        -->
+        <id column="id" jdbcType="INTEGER" property="id"/>
+        <result column="name" jdbcType="VARCHAR" property="name"/>
+        <result column="parent_id" jdbcType="INTEGER" property="parentId"/>
+        <result column="level" jdbcType="VARCHAR" property="level"/>
+        <result column="seq" jdbcType="INTEGER" property="seq"/>
+        <result column="remark" jdbcType="VARCHAR" property="remark"/>
+        <result column="operator" jdbcType="VARCHAR" property="operator"/>
+        <result column="operate_time" jdbcType="TIMESTAMP" property="operateTime"/>
+        <result column="operate_ip" jdbcType="VARCHAR" property="operateIp"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        id, name, parent_id, level, seq, remark, operator, operate_time, operate_ip
+    </sql>
+
+    <select id="countByNameAndParentId" parameterType="map" resultType="int">
+        SELECT count(1)
+        FROM sys_dept
+        WHERE name = #{name}
+        <if test="parentId != null">
+            AND parent_id = #{parentId}
+        </if>
+        <if test="id != null">
+            AND id != #{id}
+        </if>
+    </select>
+
+    <select id="countByParentId" parameterType="int" resultType="int">
+        SELECT count(1)
+        FROM sys_dept
+        WHERE parent_id = #{deptId}
+    </select>
+
+    <update id="batchUpdateLevel" parameterType="map">
+        <foreach collection="deptList" item="dept" separator=";">
+            UPDATE sys_dept
+            SET level = #{dept.level}
+            WHERE id = #{dept.id}
+        </foreach>
+    </update>
+
+    <select id="getChildDeptListByLevel" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from sys_dept
+        WHERE level like #{level} || '.%'
+    </select>
+</mapper>

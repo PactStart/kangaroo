@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="io.github.pactstart.system.dao.SmsDayCountMapper">
+    <resultMap id="BaseResultMap" type="io.github.pactstart.system.entity.SmsDayCount">
+        <!--
+          WARNING - @mbg.generated
+        -->
+        <id column="id" jdbcType="INTEGER" property="id"/>
+        <result column="year" jdbcType="INTEGER" property="year"/>
+        <result column="month" jdbcType="INTEGER" property="month"/>
+        <result column="day" jdbcType="INTEGER" property="day"/>
+        <result column="success" jdbcType="INTEGER" property="success"/>
+        <result column="fail" jdbcType="INTEGER" property="fail"/>
+        <result column="stat_time" jdbcType="DATE" property="statTime"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        id, year, month, day, success, fail, stat_time
+    </sql>
+
+    <select id="query" parameterType="Map" resultMap="BaseResultMap">
+        SELECT
+        <include refid="Base_Column_List"/>
+        FROM sms_day_count
+        where stat_time &gt;= #{fromDate} AND stat_time &lt;= #{toDate}
+    </select>
+
+    <delete id="deleteByPeriod">
+        delete from sms_day_count where stat_time &gt;= #{fromDate} AND stat_time &lt;= #{toDate}
+    </delete>
+</mapper>

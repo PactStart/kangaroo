@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="io.github.pactstart.system.dao.MemberNoticeMapper">
+    <resultMap id="BaseResultMap" type="io.github.pactstart.system.entity.MemberNotice">
+        <!--
+          WARNING - @mbg.generated
+        -->
+        <id column="id" jdbcType="BIGINT" property="id"/>
+        <result column="member_id" jdbcType="INTEGER" property="memberId"/>
+        <result column="nickname" jdbcType="VARCHAR" property="nickname"/>
+        <result column="status" jdbcType="INTEGER" property="status"/>
+        <result column="biz_type" jdbcType="INTEGER" property="bizType"/>
+        <result column="show_type" jdbcType="INTEGER" property="showType"/>
+        <result column="title" jdbcType="VARCHAR" property="title"/>
+        <result column="content" jdbcType="VARCHAR" property="content"/>
+        <result column="readed" jdbcType="BIT" property="readed"/>
+        <result column="create_time" jdbcType="TIMESTAMP" property="createTime"/>
+        <result column="del" jdbcType="BIT" property="del"/>
+    </resultMap>
+
+    <select id="query" parameterType="Map" resultMap="BaseResultMap">
+        select * from member_notice
+        <where>
+            <if test="memberId!=null">
+                and member_id = #{memberId}
+            </if>
+            <if test="status!=null">
+                and status = #{status}
+            </if>
+            <if test="bizType!=null">
+                and biz_type =#{bizType}
+            </if>
+            <if test="showType!=null">
+                and show_type = #{showType}
+            </if>
+            <if test="readed!=null">
+                and readed = #{readed}
+            </if>
+            and del = false
+        </where>
+        order by create_time DESC
+    </select>
+
+    <update id="batchUpdateStatus" parameterType="Map">
+        update member_notice set status = #{status}
+        <where>
+            id in
+            <foreach collection="noticeIdList" item="noticeId" open="(" close=")" separator=",">
+                #{noticeId}
+            </foreach>
+        </where>
+    </update>
+</mapper>

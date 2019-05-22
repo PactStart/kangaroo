@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="io.github.pactstart.system.dao.SysRoleUserMapper">
+    <resultMap id="BaseResultMap" type="io.github.pactstart.system.entity.SysRoleUser">
+        <!--
+          WARNING - @mbg.generated
+        -->
+        <id column="id" jdbcType="INTEGER" property="id"/>
+        <result column="role_id" jdbcType="INTEGER" property="roleId"/>
+        <result column="user_id" jdbcType="INTEGER" property="userId"/>
+        <result column="operator" jdbcType="VARCHAR" property="operator"/>
+        <result column="operate_time" jdbcType="TIMESTAMP" property="operateTime"/>
+        <result column="operate_ip" jdbcType="VARCHAR" property="operateIp"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        id, role_id, user_id, operator, operate_time, operate_ip
+    </sql>
+
+    <select id="getRoleIdListByUserId" parameterType="map" resultType="int">
+        SELECT role_id
+        FROM sys_role_user
+        WHERE user_id = #{userId}
+    </select>
+
+    <select id="getUserIdListByRoleId" parameterType="map" resultType="int">
+        SELECT user_id
+        FROM sys_role_user
+        WHERE role_id = #{roleId}
+    </select>
+
+    <delete id="deleteByRoleId" parameterType="int">
+        DELETE FROM sys_role_user
+        WHERE role_id = #{roleId}
+    </delete>
+
+    <select id="getUserIdListByRoleIdList" parameterType="map" resultType="int">
+        SELECT user_id
+        FROM sys_role_user
+        WHERE role_id IN
+        <foreach collection="roleIdList" item="roleId" open="(" close=")" separator=",">
+            #{roleId}
+        </foreach>
+    </select>
+
+    <select id="countByRoleId" parameterType="int" resultType="int">
+        SELECT count(1)
+        FROM sys_role_user
+        WHERE role_id = #{roleId}
+    </select>
+</mapper>

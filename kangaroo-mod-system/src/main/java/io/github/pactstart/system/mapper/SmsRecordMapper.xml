@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="io.github.pactstart.system.dao.SmsRecordMapper">
+    <resultMap id="BaseResultMap" type="io.github.pactstart.system.entity.SmsRecord">
+        <!--
+          WARNING - @mbg.generated
+        -->
+        <id column="id" jdbcType="INTEGER" property="id"/>
+        <result column="template_id" jdbcType="VARCHAR" property="templateId"/>
+        <result column="content" jdbcType="VARCHAR" property="content"/>
+        <result column="params" jdbcType="VARCHAR" property="params"/>
+        <result column="phone" jdbcType="VARCHAR" property="phone"/>
+        <result column="success" jdbcType="BIT" property="success"/>
+        <result column="remark" jdbcType="VARCHAR" property="remark"/>
+        <result column="operator" jdbcType="VARCHAR" property="operator"/>
+        <result column="operate_time" jdbcType="TIMESTAMP" property="operateTime"/>
+        <result column="operate_ip" jdbcType="VARCHAR" property="operateIp"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        id, template_id, content, params, phone, success, remark, operator, operate_time, operate_ip
+    </sql>
+
+    <select id="query" parameterType="Map" resultMap="BaseResultMap">
+        SELECT
+        <include refid="Base_Column_List"/>
+        FROM sms_record
+        <where>
+            <if test="@Ognl@isNotEmpty(templateId)">
+                AND template_id = #{templateId}
+            </if>
+            <if test="success != null">
+                AND success = #{success}
+            </if>
+            <if test="@Ognl@isNotEmpty(phone)">
+                AND phone = #{phone}
+            </if>
+            <if test="fromDate != null">
+                AND operate_time &gt;= #{fromDate}
+            </if>
+            <if test="toDate != null">
+                AND operate_time &lt;= #{toDate}
+            </if>
+        </where>
+        ORDER BY id desc
+    </select>
+
+    <select id="statByDate" parameterType="Map" resultType="io.github.pactstart.system.model.SmsStat">
+        SELECT
+            DATE(operate_time)       as stat_date,
+            SUM(IF(success,true,1))  as success,
+            SUM(IF(success,false,1)) as fail
+        FROM sms_record
+        WHERE
+        operate_time &gt;= #{fromDate} AND operate_time &lt; #{toDate}
+        GROUP BY DATE(operate_time)
+    </select>
+</mapper>

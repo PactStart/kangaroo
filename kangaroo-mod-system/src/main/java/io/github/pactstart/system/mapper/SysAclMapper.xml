@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="io.github.pactstart.system.dao.SysAclMapper">
+    <resultMap id="BaseResultMap" type="io.github.pactstart.system.entity.SysAcl">
+        <!--
+          WARNING - @mbg.generated
+        -->
+        <id column="id" jdbcType="INTEGER" property="id"/>
+        <result column="code" jdbcType="VARCHAR" property="code"/>
+        <result column="name" jdbcType="VARCHAR" property="name"/>
+        <result column="acl_module_id" jdbcType="INTEGER" property="aclModuleId"/>
+        <result column="url" jdbcType="VARCHAR" property="url"/>
+        <result column="type" jdbcType="INTEGER" property="type"/>
+        <result column="status" jdbcType="INTEGER" property="status"/>
+        <result column="seq" jdbcType="INTEGER" property="seq"/>
+        <result column="remark" jdbcType="VARCHAR" property="remark"/>
+        <result column="operator" jdbcType="VARCHAR" property="operator"/>
+        <result column="operate_time" jdbcType="TIMESTAMP" property="operateTime"/>
+        <result column="operate_ip" jdbcType="VARCHAR" property="operateIp"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        id, code, name, acl_module_id, url, type, status, seq, remark, operator, operate_time, operate_ip
+    </sql>
+
+    <select id="countByNameAndAclModuleId" parameterType="map" resultType="int">
+        SELECT count(1)
+        FROM sys_acl
+        WHERE acl_module_id = #{aclModuleId}
+        AND name = #{name}
+        <if test="id != null">
+            AND id != #{id}
+        </if>
+    </select>
+
+    <select id="countByAclModuleId" parameterType="map" resultType="int">
+        SELECT count(1)
+        FROM sys_acl
+        WHERE acl_module_id = #{aclModuleId}
+    </select>
+
+    <select id="getAll" resultMap="BaseResultMap">
+        SELECT
+        <include refid="Base_Column_List"/>
+        FROM sys_acl
+    </select>
+
+    <select id="getByIdList" parameterType="map" resultMap="BaseResultMap">
+        SELECT
+        <include refid="Base_Column_List"/>
+        FROM sys_acl
+        WHERE id IN
+        <foreach collection="idList" item="id" open="(" close=")" separator=",">
+            #{id}
+        </foreach>
+    </select>
+
+    <select id="getByUrl" parameterType="string" resultMap="BaseResultMap">
+        SELECT
+        <include refid="Base_Column_List"/>
+        FROM sys_acl
+        WHERE url = #{url} <!-- url is not null and url != '' and  #{url} REGEXP url-->
+    </select>
+
+    <select id="query" parameterType="map" resultMap="BaseResultMap">
+        SELECT
+        <include refid="Base_Column_List"/>
+        FROM sys_acl
+        <where>
+            <if test="aclModuleId != null">
+                acl_module_id = #{aclModuleId}
+            </if>
+            <if test="@Ognl@isNotEmpty(name)">
+                name like concat('%',name,'%')
+            </if>
+            <if test="@Ognl@isNotEmpty(url)">
+                url like concat('%',url,'%')
+            </if>
+        </where>
+        ORDER BY seq ASC
+    </select>
+
+</mapper>

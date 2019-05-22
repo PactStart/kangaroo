@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="io.github.pactstart.system.dao.PlatformNoticeMapper">
+    <resultMap id="BaseResultMap" type="io.github.pactstart.system.entity.PlatformNotice">
+        <!--
+          WARNING - @mbg.generated
+        -->
+        <id column="id" jdbcType="INTEGER" property="id"/>
+        <result column="status" jdbcType="INTEGER" property="status"/>
+        <result column="title" jdbcType="VARCHAR" property="title"/>
+        <result column="content" jdbcType="VARCHAR" property="content"/>
+        <result column="read_count" jdbcType="INTEGER" property="readCount"/>
+        <result column="create_time" jdbcType="TIMESTAMP" property="createTime"/>
+        <result column="operator" jdbcType="VARCHAR" property="operator"/>
+        <result column="operate_time" jdbcType="TIMESTAMP" property="operateTime"/>
+        <result column="operate_ip" jdbcType="VARCHAR" property="operateIp"/>
+    </resultMap>
+
+    <select id="query" parameterType="Map" resultMap="BaseResultMap">
+        select * from platform_notice
+        <where>
+            <if test="status!=null">
+                and status = #{status}
+            </if>
+        </where>
+        order by create_time DESC
+    </select>
+
+    <select id="queryMyPlatformNotice" parameterType="Map" resultMap="BaseResultMap">
+        select t1.*,IF(ISNULL(t2.member_id),false,true) as readed from platform_notice t1
+        left join platform_notice_readed t2 on t1.id = platform_notice_id and t2.member_id = #{memberId}
+        <where>
+            t1.status = #{status}
+            <if test="readed != null">
+                <choose>
+                    <when test="readed == true">
+                        and t2.member_id IS NOT NULL
+                    </when>
+                    <otherwise>
+                        and t2.member_id IS NULL
+                    </otherwise>
+                </choose>
+
+            </if>
+        </where>
+        order by create_time DESC
+    </select>
+
+</mapper>

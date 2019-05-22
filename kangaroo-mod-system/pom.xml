@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xmlns="http://maven.apache.org/POM/4.0.0"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <artifactId>kangaroo-parent</artifactId>
+        <groupId>io.github.pactstart</groupId>
+        <version>1.0.0</version>
+        <relativePath>../kangaroo-parent/pom.xml</relativePath>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+
+    <artifactId>kangaroo-mod-system</artifactId>
+    <version>1.0.0</version>
+
+    <name>kangaroo-mod-system</name>
+    <description>提供一般web后台所需要的RBAC权限管理、系统配置、版本管理、短信管理、通知管理、文件上传基本功能</description>
+
+    <dependencies>
+        <dependency>
+            <groupId>io.github.pactstart</groupId>
+            <artifactId>kangaroo-basedao</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>io.github.pactstart</groupId>
+            <artifactId>kangaroo-biz-common</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>io.github.pactstart</groupId>
+            <artifactId>kangaroo-commonutils</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>io.github.pactstart</groupId>
+            <artifactId>cache-spring-boot-starter</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>io.github.pactstart</groupId>
+            <artifactId>aliyun-sms-spring-boot-starter</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>io.github.pactstart</groupId>
+            <artifactId>jpush-spring-boot-starter</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>io.github.pactstart</groupId>
+            <artifactId>aliyun-oss-spring-boot-starter</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>io.github.pactstart</groupId>
+            <artifactId>aliyun-sts-spring-boot-starter</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>joda-time</groupId>
+            <artifactId>joda-time</artifactId>
+        </dependency>
+        <!--<dependency>-->
+        <!--<groupId>com.github.everit-org.json-schema</groupId>-->
+        <!--<artifactId>org.everit.json.schema</artifactId>-->
+        <!--</dependency>-->
+    </dependencies>
+
+    <build>
+        <resources>
+            <resource>
+                <directory>src/main/java</directory>
+                <includes>
+                    <include>**/*.xml</include>
+                </includes>
+                <filtering>false</filtering>
+            </resource>
+        </resources>
+    </build>
+
+</project>

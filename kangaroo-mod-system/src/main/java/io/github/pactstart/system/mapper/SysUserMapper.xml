@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="io.github.pactstart.system.dao.SysUserMapper">
+    <resultMap id="BaseResultMap" type="io.github.pactstart.system.entity.SysUser">
+        <!--
+          WARNING - @mbg.generated
+        -->
+        <id column="id" jdbcType="INTEGER" property="id"/>
+        <result column="username" jdbcType="VARCHAR" property="username"/>
+        <result column="telephone" jdbcType="VARCHAR" property="telephone"/>
+        <result column="mail" jdbcType="VARCHAR" property="mail"/>
+        <result column="password" jdbcType="VARCHAR" property="password"/>
+        <result column="dept_id" jdbcType="INTEGER" property="deptId"/>
+        <result column="status" jdbcType="INTEGER" property="status"/>
+        <result column="remark" jdbcType="VARCHAR" property="remark"/>
+        <result column="operator" jdbcType="VARCHAR" property="operator"/>
+        <result column="operate_time" jdbcType="TIMESTAMP" property="operateTime"/>
+        <result column="operate_ip" jdbcType="VARCHAR" property="operateIp"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        id, username, telephone, mail, password, dept_id, status, remark, operator, operate_time, operate_ip
+    </sql>
+
+    <select id="countByTelephone" parameterType="map" resultType="int">
+        SELECT count(1)
+        FROM sys_user
+        WHERE telephone = #{telephone}
+        <if test="id != null">
+            AND id != #{id}
+        </if>
+    </select>
+
+    <select id="countByMail" parameterType="map" resultType="int">
+        SELECT count(1)
+        FROM sys_user
+        WHERE mail = #{mail}
+        <if test="id != null">
+            AND id != #{id}
+        </if>
+    </select>
+
+    <select id="countByDeptId" parameterType="int" resultType="int">
+        SELECT count(1)
+        FROM sys_user
+        WHERE dept_id = #{deptId}
+    </select>
+
+    <select id="findByKeyword" parameterType="string" resultMap="BaseResultMap">
+        SELECT
+        <include refid="Base_Column_List"/>
+        FROM sys_user
+        WHERE telephone = #{keyword}
+        OR mail = #{keyword}
+    </select>
+
+    <select id="getByIdList" parameterType="map" resultMap="BaseResultMap">
+        SELECT
+        <include refid="Base_Column_List"/>
+        FROM sys_user
+        WHERE id IN
+        <foreach collection="idList" item="id" open="(" close=")" separator=",">
+            #{id}
+        </foreach>
+    </select>
+
+    <select id="getAll" resultMap="BaseResultMap">
+        SELECT
+        <include refid="Base_Column_List"/>
+        FROM sys_user
+    </select>
+
+    <select id="query" parameterType="map" resultMap="BaseResultMap">
+        SELECT
+        <include refid="Base_Column_List"/>
+        FROM sys_user
+        <where>
+            <if test="deptId != null">
+                AND dept_id = #{deptId}
+            </if>
+            <if test="status != null">
+                AND status = #{status}
+            </if>
+            <if test="excludeStatus != null">
+                AND status != #{excludeStatus}
+            </if>
+            <if test="@Ognl@isNotEmpty(telephone)">
+                AND telephone like concat('%', #{telephone}, '%')
+            </if>
+            <if test="@Ognl@isNotEmpty(username)">
+                AND username like concat('%', #{username}, '%')
+            </if>
+        </where>
+    </select>
+</mapper>

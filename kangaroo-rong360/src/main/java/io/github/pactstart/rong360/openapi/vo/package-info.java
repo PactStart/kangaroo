@@ -1,0 +1,1 @@
+package io.github.pactstart.rong360.openapi.vo;
