@@ -11,6 +11,8 @@ public class WxPayProperties {
 
     private String appId;
 
+    private String openAppId;
+
     private String mchId;
 
     private String key;

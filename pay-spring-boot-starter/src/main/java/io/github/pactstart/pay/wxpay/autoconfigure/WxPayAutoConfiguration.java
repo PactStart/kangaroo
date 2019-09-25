@@ -15,8 +15,13 @@ import org.springframework.context.annotation.Configuration;
 @EnableConfigurationProperties(WxPayProperties.class)
 public class WxPayAutoConfiguration {
 
-    @Bean
-    public WxPayService wxPayService(WxPayProperties wxPayProperties) throws Exception {
-        return new WxPayService(wxPayProperties);
+    @Bean("mpWxPayService")
+    public WxPayService mpWxPayService(WxPayProperties wxPayProperties) throws Exception {
+        return new WxPayService(new MyWxPayConfig(wxPayProperties.getAppId(), wxPayProperties.getMchId(), wxPayProperties.getKey(), wxPayProperties.getCertFile()), wxPayProperties.getNotifyUrl(), wxPayProperties.isAutoReport(), wxPayProperties.isUseSandbox());
+    }
+
+    @Bean("openWxPayService")
+    public WxPayService openWxPayService(WxPayProperties wxPayProperties) throws Exception {
+        return new WxPayService(new MyWxPayConfig(wxPayProperties.getOpenAppId(), wxPayProperties.getMchId(), wxPayProperties.getKey(), wxPayProperties.getCertFile()), wxPayProperties.getNotifyUrl(), wxPayProperties.isAutoReport(), wxPayProperties.isUseSandbox());
     }
 }

@@ -6,7 +6,6 @@ import com.github.wxpay.sdk.WXPayUtil;
 import com.google.common.collect.Maps;
 import io.github.pactstart.biz.common.utils.BeanMapUtils;
 import io.github.pactstart.pay.wxpay.autoconfigure.MyWxPayConfig;
-import io.github.pactstart.pay.wxpay.autoconfigure.WxPayProperties;
 import io.github.pactstart.pay.wxpay.model.Coupon;
 import io.github.pactstart.pay.wxpay.model.CouponRefund;
 import io.github.pactstart.pay.wxpay.model.OrderRefund;
@@ -26,13 +25,13 @@ public class WxPayService {
 
     private final WXPay wxPay;
 
-    private final WxPayProperties wxPayProperties;
+    private final MyWxPayConfig myWxPayConfig;
 
-    public WxPayService(WxPayProperties wxPayProperties) throws Exception {
-        this.wxPayProperties = wxPayProperties;
-        this.wxPay = new WXPay(new MyWxPayConfig(wxPayProperties), wxPayProperties.getNotifyUrl(), wxPayProperties.isAutoReport(), wxPayProperties.isUseSandbox());
+    public WxPayService(MyWxPayConfig myWxPayConfig, String notifyUrl, boolean isAutoReport, Boolean isUseSandbox) throws Exception {
+        this.myWxPayConfig = myWxPayConfig;
+        this.wxPay = new WXPay(myWxPayConfig, notifyUrl, isAutoReport, isUseSandbox);
         this.wxPay.checkWXPayConfig();
-        if (StringUtils.isBlank(wxPayProperties.getNotifyUrl())) {
+        if (StringUtils.isBlank(notifyUrl)) {
             throw new Exception("notifyUrl in config is empty");
         }
     }
@@ -41,8 +40,8 @@ public class WxPayService {
         return wxPay;
     }
 
-    public WxPayProperties getWxPayProperties() {
-        return wxPayProperties;
+    public MyWxPayConfig getMyWxPayConfig() {
+        return myWxPayConfig;
     }
 
     private Map<String, String> getParamMap(Object request) {
@@ -89,7 +88,7 @@ public class WxPayService {
     public TransferQueryResponse transferQuery(TransferQueryRequest request) throws Exception {
         validateParam(request);
         Map<String, String> paramMap = getParamMap(request);
-        Map<String, String> responseParamMap = wxPay.transfer(paramMap);
+        Map<String, String> responseParamMap = wxPay.transferQuery(paramMap);
         TransferQueryResponse response = JSON.parseObject(JSON.toJSONString(responseParamMap), TransferQueryResponse.class);
         return response;
     }
@@ -111,6 +110,7 @@ public class WxPayService {
 
     /**
      * 获取app支付参数
+     *
      * @param response 预支付响应
      * @return app支付参数
      * @throws Exception 异常
@@ -124,7 +124,7 @@ public class WxPayService {
         appPayParamMap.put("noncestr", WXPayUtil.generateNonceStr());
         appPayParamMap.put("timestamp", WXPayUtil.getCurrentTimestamp() + "");
         //签名方式一定要与统一下单接口使用的一致
-        appPayParamMap.put("sign", WXPayUtil.generateSignature(appPayParamMap, wxPayProperties.getKey(), wxPay.getSignType()));
+        appPayParamMap.put("sign", WXPayUtil.generateSignature(appPayParamMap, this.myWxPayConfig.getKey(), wxPay.getSignType()));
         //SB的微信支付接口文档
         appPayParamMap.put("packageTag", "Sign=WXPay");
         return appPayParamMap;
@@ -271,6 +271,7 @@ public class WxPayService {
      * 2、 调用支付接口后，返回系统错误或未知交易状态情况；<br>
      * 3、 调用刷卡支付API，返回USERPAYING的状态；<br>
      * 4、调用关单或撤销接口API之前，需确认支付状态；<br>
+     *
      * @param request 请求
      * @return 响应
      * @throws Exception 异常

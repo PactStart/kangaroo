@@ -7,33 +7,42 @@ import java.io.InputStream;
 
 public class MyWxPayConfig extends WXPayConfig {
 
-    private WxPayProperties wxPayProperties;
+    private String appId;
+
+    private String mchId;
+
+    private String key;
+
+    private String certFile;
 
     private IWXPayDomain wxPayDomain;
 
-    public MyWxPayConfig(WxPayProperties wxPayProperties) {
-        this.wxPayProperties = wxPayProperties;
+    public MyWxPayConfig(String appId, String mchId, String key, String certFile) {
+        this.appId = appId;
+        this.mchId = mchId;
+        this.key = key;
+        this.certFile = certFile;
         this.wxPayDomain = new MyWxPayDomain();
     }
 
     @Override
     public String getAppID() {
-        return wxPayProperties.getAppId();
+        return this.appId;
     }
 
     @Override
     public String getMchID() {
-        return wxPayProperties.getMchId();
+        return this.mchId;
     }
 
     @Override
     public String getKey() {
-        return wxPayProperties.getKey();
+        return this.key;
     }
 
     @Override
     public InputStream getCertStream() {
-        return this.getClass().getResourceAsStream(wxPayProperties.getCertFile());
+        return this.getClass().getResourceAsStream(certFile);
     }
 
     @Override
@@ -48,7 +57,7 @@ public class MyWxPayConfig extends WXPayConfig {
 
     @Override
     public IWXPayDomain getWXPayDomain() {
-        return new MyWxPayDomain();
+        return this.wxPayDomain;
     }
 
     @Override

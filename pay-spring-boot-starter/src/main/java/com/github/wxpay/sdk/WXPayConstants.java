@@ -36,7 +36,7 @@ public class WXPayConstants {
     public static final String HB_GROUP_URL = "/mmpaymkttransfers/sendgroupredpack";
     public static final String HB_QUERY_URL = "/mmpaymkttransfers/gethbinfo";
     public static final String TRANSFER_URL = "/mmpaymkttransfers/promotion/transfers";
-    public static final String TRANSFER_QUERY_URL = "https://api.mch.weixin.qq.com/mmpaymkttransfers/gethbinfo";
+    public static final String TRANSFER_QUERY_URL = "/mmpaymkttransfers/gethbinfo";
 
 
     // sandbox

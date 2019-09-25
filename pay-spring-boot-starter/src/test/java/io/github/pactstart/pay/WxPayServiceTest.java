@@ -3,7 +3,6 @@ package io.github.pactstart.pay;
 import com.alibaba.fastjson.JSON;
 import io.github.pactstart.commonutils.JsonUtils;
 import io.github.pactstart.pay.wxpay.WxPayService;
-import io.github.pactstart.pay.wxpay.autoconfigure.WxPayProperties;
 import io.github.pactstart.pay.wxpay.request.OrderQueryRequest;
 import io.github.pactstart.pay.wxpay.request.PayResultNoticeRequest;
 import io.github.pactstart.pay.wxpay.request.transfer.TransferRequest;
@@ -18,13 +17,7 @@ public class WxPayServiceTest {
 
     //    @Before
     public void init() throws Exception {
-        WxPayProperties wxPayProperties = new WxPayProperties();
-        wxPayProperties.setAppId("");
-        wxPayProperties.setMchId("");
-        wxPayProperties.setCertFile("/cert/apiclient_cert.p12");
-        wxPayProperties.setKey("");
-        wxPayProperties.setNotifyUrl("xxx");
-        wxPayService = new WxPayService(wxPayProperties);
+        //this.wxpayService = new ...
     }
 
     //    @Test
@@ -36,13 +29,13 @@ public class WxPayServiceTest {
 
     //    @Test
     public void testParsePayNoticeData() throws Exception {
-        String xml = "<xml><appid><![CDATA[" + wxPayService.getWxPayProperties().getAppId() + "]]></appid>\n" +
+        String xml = "<xml><appid><![CDATA[" + wxPayService.getMyWxPayConfig().getAppID() + "]]></appid>\n" +
                 "<attach><![CDATA[支付0.03元]]></attach>\n" +
                 "<bank_type><![CDATA[SPDB_CREDIT]]></bank_type>\n" +
                 "<cash_fee><![CDATA[3]]></cash_fee>\n" +
                 "<fee_type><![CDATA[CNY]]></fee_type>\n" +
                 "<is_subscribe><![CDATA[N]]></is_subscribe>\n" +
-                "<mch_id><![CDATA[" + wxPayService.getWxPayProperties().getMchId() + "]]></mch_id>\n" +
+                "<mch_id><![CDATA[" + wxPayService.getMyWxPayConfig().getMchID() + "]]></mch_id>\n" +
                 "<nonce_str><![CDATA[ZRZqfCpGBt5qYIkGGcNUEq4DItu2CvKA]]></nonce_str>\n" +
                 "<openid><![CDATA[oJBoq02YKtvXfKO5gdWkCMSe8PL0]]></openid>\n" +
                 "<out_trade_no><![CDATA[101019270488012230656]]></out_trade_no>\n" +
