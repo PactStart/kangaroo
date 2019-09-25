@@ -5,13 +5,12 @@
     <parent>
         <artifactId>kangaroo-parent</artifactId>
         <groupId>io.github.pactstart</groupId>
-        <version>1.0.0</version>
+        <version>1.0.1</version>
         <relativePath>../kangaroo-parent/pom.xml</relativePath>
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
     <artifactId>kangaroo-poi</artifactId>
-    <version>1.0.0</version>
 
     <dependencies>
         <dependency>

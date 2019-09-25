@@ -5,13 +5,12 @@
     <parent>
         <artifactId>kangaroo-parent</artifactId>
         <groupId>io.github.pactstart</groupId>
-        <version>1.0.0</version>
+        <version>1.0.1</version>
         <relativePath>../kangaroo-parent/pom.xml</relativePath>
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
     <artifactId>cache-spring-boot-starter</artifactId>
-    <version>1.0.0</version>
 
     <name>cache-spring-boot-starter</name>
     <description>对外暴露统一的缓存接口，通过配置决定缓存的实现方式。</description>

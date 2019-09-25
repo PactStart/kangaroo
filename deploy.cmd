@@ -1,68 +1,68 @@
 cd kangaroo-parent
-mvn clean deploy -P release
+call mvn clean deploy -P release -DskipTests
 cd  ..
 cd kangaroo-commonutils
-mvn clean deploy -P release
+call mvn clean deploy -P release -DskipTests
 cd ..
 cd kangaroo-simple-web-framework
-mvn clean deploy -P release
+call mvn clean deploy -P release -DskipTests
 cd..
 cd kangaroo-httputils
-mvn clean deploy -P release
+call mvn clean deploy -P release -DskipTests
 cd ..
 cd kangaroo-poi
-mvn clean deploy -P release
+call mvn clean deploy -P release -DskipTests
 cd ..
 cd kangaroo-basedao
-mvn clean deploy -P release
+call mvn clean deploy -P release -DskipTests
 cd ..
 cd kangaroo-biz-common
-mvn clean deploy -P release
+call mvn clean deploy -P release -DskipTests
 cd ..
 cd kangaroo-mq
-mvn clean deploy -P release
+call mvn clean deploy -P release -DskipTests
 cd ..
 cd redis-mq-spring-boot-starter
-mvn clean deploy -P release
+call mvn clean deploy -P release -DskipTests
 cd ..
 cd aliyun-oss-spring-boot-starter
-mvn clean deploy -P release
+call mvn clean deploy -P release -DskipTests
 cd ..
 cd aliyun-sms-spring-boot-starter
-mvn clean deploy -P release
+call mvn clean deploy -P release -DskipTests
 cd ..
 cd aliyun-sts-spring-boot-starter
-mvn clean deploy -P release
+call mvn clean deploy -P release -DskipTests
 cd ..
 cd cache-spring-boot-starter
-mvn clean deploy -P release
+call mvn clean deploy -P release -DskipTests
 cd ..
 cd chuanglan-sms-spring-boot-starter
-mvn clean deploy -P release
+call mvn clean deploy -P release -DskipTests
 cd ..
 cd jpush-spring-boot-starter
-mvn clean deploy -P release
+call mvn clean deploy -P release -DskipTests
 cd ..
 cd juhe-spring-boot-starter
-mvn clean deploy -P release
+call mvn clean deploy -P release -DskipTests
 cd ..
 cd pay-spring-boot-starter
-mvn clean deploy -P release
+call mvn clean deploy -P release -DskipTests
 cd ..
 cd kangaroo-weixin-toolkit
-mvn clean deploy -P release
+call mvn clean deploy -P release -DskipTests
 cd ..
 cd weixin-spring-boot-starter
-mvn clean deploy -P release
+call mvn clean deploy -P release -DskipTests
 cd ..
 cd kangaroo-service-dispatcher
-mvn clean deploy -P release
+call mvn clean deploy -P release -DskipTests
 cd ..
 cd kangaroo-mod-system
-mvn clean deploy -P release
+call mvn clean deploy -P release -DskipTests
 cd ..
 cd kangaroo-web-admin
-mvn clean deploy -P release
+call mvn clean deploy -P release -DskipTests
 cd ..
 cd kangaroo-dependencies
-mvn clean deploy -P release
+call mvn clean deploy -P release -DskipTests

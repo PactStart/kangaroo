@@ -5,13 +5,12 @@
     <parent>
         <artifactId>kangaroo-parent</artifactId>
         <groupId>io.github.pactstart</groupId>
-        <version>1.0.0</version>
+        <version>1.0.1</version>
         <relativePath>../kangaroo-parent/pom.xml</relativePath>
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
     <artifactId>kangaroo-mod-system</artifactId>
-    <version>1.0.0</version>
 
     <name>kangaroo-mod-system</name>
     <description>提供一般web后台所需要的RBAC权限管理、系统配置、版本管理、短信管理、通知管理、文件上传基本功能</description>

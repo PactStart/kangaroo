@@ -6,7 +6,7 @@
 
     <groupId>io.github.pactstart</groupId>
     <artifactId>kangaroo-dependencies</artifactId>
-    <version>1.0.2</version>
+    <version>1.0.3</version>
     <packaging>pom</packaging>
 
     <name>kangaroo-dependencies</name>
@@ -95,27 +95,27 @@
             <dependency>
                 <groupId>io.github.pactstart</groupId>
                 <artifactId>kangaroo-basedao</artifactId>
-                <version>1.0.0</version>
+                <version>1.0.1</version>
             </dependency>
             <dependency>
                 <groupId>io.github.pactstart</groupId>
                 <artifactId>kangaroo-commonutils</artifactId>
-                <version>1.0.0</version>
+                <version>1.0.1</version>
             </dependency>
             <dependency>
                 <groupId>io.github.pactstart</groupId>
                 <artifactId>kangaroo-httputils</artifactId>
-                <version>1.0.0</version>
+                <version>1.0.1</version>
             </dependency>
             <dependency>
                 <groupId>io.github.pactstart</groupId>
                 <artifactId>kangaroo-poi</artifactId>
-                <version>1.0.0</version>
+                <version>1.0.1</version>
             </dependency>
             <dependency>
                 <groupId>io.github.pactstart</groupId>
                 <artifactId>kangaroo-service-dispatcher</artifactId>
-                <version>1.0.0</version>
+                <version>1.0.1</version>
             </dependency>
             <dependency>
                 <groupId>io.github.pactstart</groupId>
@@ -125,77 +125,77 @@
             <dependency>
                 <groupId>io.github.pactstart</groupId>
                 <artifactId>cache-spring-boot-starter</artifactId>
-                <version>1.0.0</version>
+                <version>1.0.1</version>
             </dependency>
             <dependency>
                 <groupId>io.github.pactstart</groupId>
                 <artifactId>pay-spring-boot-starter</artifactId>
-                <version>1.0.0</version>
+                <version>1.0.3</version>
             </dependency>
             <dependency>
                 <groupId>io.github.pactstart</groupId>
                 <artifactId>aliyun-sms-spring-boot-starter</artifactId>
-                <version>1.0.0</version>
+                <version>1.0.1</version>
             </dependency>
             <dependency>
                 <groupId>io.github.pactstart</groupId>
                 <artifactId>aliyun-sts-spring-boot-starter</artifactId>
-                <version>1.0.0</version>
+                <version>1.0.1</version>
             </dependency>
             <dependency>
                 <groupId>io.github.pactstart</groupId>
                 <artifactId>aliyun-oss-spring-boot-starter</artifactId>
-                <version>1.0.0</version>
+                <version>1.0.1</version>
             </dependency>
             <dependency>
                 <groupId>io.github.pactstart</groupId>
                 <artifactId>juhe-spring-boot-starter</artifactId>
-                <version>1.0.0</version>
+                <version>1.0.1</version>
             </dependency>
             <dependency>
                 <groupId>io.github.pactstart</groupId>
                 <artifactId>jpush-spring-boot-starter</artifactId>
-                <version>1.0.0</version>
+                <version>1.0.1</version>
             </dependency>
             <dependency>
                 <groupId>io.github.pactstart</groupId>
                 <artifactId>chuanglan-sms-spring-boot-starter</artifactId>
-                <version>1.0.0</version>
+                <version>1.0.1</version>
             </dependency>
             <dependency>
                 <groupId>io.github.pactstart</groupId>
                 <artifactId>kangaroo-mq</artifactId>
-                <version>1.0.0</version>
+                <version>1.0.1</version>
             </dependency>
             <dependency>
                 <groupId>io.github.pactstart</groupId>
                 <artifactId>aliyun-mq-spring-boot-starter</artifactId>
-                <version>1.0.0</version>
+                <version>1.0.1</version>
             </dependency>
             <dependency>
                 <groupId>io.github.pactstart</groupId>
                 <artifactId>redis-mq-spring-boot-starter</artifactId>
-                <version>1.0.0</version>
+                <version>1.0.1</version>
             </dependency>
             <dependency>
                 <groupId>io.github.pactstart</groupId>
                 <artifactId>kangaroo-weixin-toolkit</artifactId>
-                <version>1.0.0</version>
+                <version>1.0.1</version>
             </dependency>
             <dependency>
                 <groupId>io.github.pactstart</groupId>
                 <artifactId>weixin-spring-boot-starter</artifactId>
-                <version>1.0.0</version>
+                <version>1.0.1</version>
             </dependency>
             <dependency>
                 <groupId>io.github.pactstart</groupId>
                 <artifactId>kangaroo-simple-web-framework</artifactId>
-                <version>1.0.2</version>
+                <version>1.0.5</version>
             </dependency>
             <dependency>
                 <groupId>io.github.pactstart</groupId>
                 <artifactId>kangaroo-web-admin</artifactId>
-                <version>1.0.0</version>
+                <version>1.0.1</version>
             </dependency>
             <dependency>
                 <groupId>redis.clients</groupId>
@@ -597,30 +597,17 @@
                             </execution>
                         </executions>
                     </plugin>
-                    <plugin>
-                        <groupId>org.apache.maven.plugins</groupId>
-                        <artifactId>maven-gpg-plugin</artifactId>
-                        <version>1.6</version>
-                        <executions>
-                            <execution>
-                                <phase>verify</phase>
-                                <goals>
-                                    <goal>sign</goal>
-                                </goals>
-                            </execution>
-                        </executions>
-                    </plugin>
                 </plugins>
             </build>
             <distributionManagement>
-                <snapshotRepository>
-                    <id>oss</id>
-                    <url>https://oss.sonatype.org/content/repositories/snapshots/</url>
-                </snapshotRepository>
                 <repository>
-                    <id>oss</id>
-                    <url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
+                    <id>rdc-releases</id>
+                    <url>https://repo.rdc.aliyun.com/repository/51679-release-3LBV6E/</url>
                 </repository>
+                <snapshotRepository>
+                    <id>rdc-snapshots</id>
+                    <url>https://repo.rdc.aliyun.com/repository/51679-snapshot-Wq6LJ2/</url>
+                </snapshotRepository>
             </distributionManagement>
         </profile>
     </profiles>
