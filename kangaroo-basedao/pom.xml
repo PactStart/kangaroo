@@ -5,7 +5,7 @@
     <parent>
         <artifactId>kangaroo-parent</artifactId>
         <groupId>io.github.pactstart</groupId>
-        <version>1.0.1</version>
+        <version>1.0.2-SNAPSHOT</version>
         <relativePath>../kangaroo-parent/pom.xml</relativePath>
     </parent>
     <modelVersion>4.0.0</modelVersion>
@@ -14,7 +14,6 @@
 
     <name>kangaroo-basedao</name>
     <description>基于tkmybatis和pagehelper提供数据操作基类和分页支持。</description>
-
 
     <dependencies>
         <!--mybatis-->

@@ -5,13 +5,13 @@
     <parent>
         <artifactId>kangaroo-parent</artifactId>
         <groupId>io.github.pactstart</groupId>
-        <version>1.0.1</version>
+        <version>1.0.2-SNAPSHOT</version>
         <relativePath>../kangaroo-parent/pom.xml</relativePath>
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
     <artifactId>kangaroo-simple-web-framework</artifactId>
-    <version>1.0.5</version>
+    <version>1.0.6-SNAPSHOT</version>
 
     <dependencies>
         <dependency>
@@ -21,12 +21,12 @@
         <dependency>
             <groupId>io.github.pactstart</groupId>
             <artifactId>kangaroo-commonutils</artifactId>
-            <version>1.0.1</version>
+            <version>1.0.2-SNAPSHOT</version>
         </dependency>
         <dependency>
             <groupId>io.github.pactstart</groupId>
             <artifactId>kangaroo-biz-common</artifactId>
-            <version>1.0.1</version>
+            <version>1.0.2-SNAPSHOT</version>
         </dependency>
         <dependency>
             <groupId>commons-io</groupId>
@@ -94,7 +94,6 @@
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
-            <version>4.11</version>
             <scope>test</scope>
         </dependency>
     </dependencies>

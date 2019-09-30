@@ -5,19 +5,18 @@
     <parent>
         <artifactId>kangaroo-parent</artifactId>
         <groupId>io.github.pactstart</groupId>
-        <version>1.0.1</version>
+        <version>1.0.2-SNAPSHOT</version>
         <relativePath>../kangaroo-parent/pom.xml</relativePath>
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
     <artifactId>pay-spring-boot-starter</artifactId>
-    <version>1.0.3</version>
+    <version>1.0.4-SNAPSHOT</version>
 
     <dependencies>
         <dependency>
             <groupId>io.github.pactstart</groupId>
             <artifactId>kangaroo-biz-common</artifactId>
-            <version>1.0.1</version>
         </dependency>
         <dependency>
             <groupId>org.apache.httpcomponents</groupId>
@@ -26,7 +25,6 @@
         <dependency>
             <groupId>io.github.pactstart</groupId>
             <artifactId>kangaroo-commonutils</artifactId>
-            <version>1.0.1</version>
         </dependency>
         <dependency>
             <groupId>com.alipay</groupId>
@@ -50,7 +48,6 @@
         <dependency>
             <groupId>ch.qos.logback</groupId>
             <artifactId>logback-classic</artifactId>
-            <version>1.1.11</version>
         </dependency>
         <dependency>
             <groupId>junit</groupId>

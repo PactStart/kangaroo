@@ -3,9 +3,6 @@ call mvn clean deploy -P release -DskipTests
 cd  ..
 cd kangaroo-commonutils
 call mvn clean deploy -P release -DskipTests
-cd ..
-cd kangaroo-simple-web-framework
-call mvn clean deploy -P release -DskipTests
 cd..
 cd kangaroo-httputils
 call mvn clean deploy -P release -DskipTests
@@ -17,6 +14,9 @@ cd kangaroo-basedao
 call mvn clean deploy -P release -DskipTests
 cd ..
 cd kangaroo-biz-common
+call mvn clean deploy -P release -DskipTests
+cd ..
+cd kangaroo-simple-web-framework
 call mvn clean deploy -P release -DskipTests
 cd ..
 cd kangaroo-mq
@@ -66,3 +66,4 @@ call mvn clean deploy -P release -DskipTests
 cd ..
 cd kangaroo-dependencies
 call mvn clean deploy -P release -DskipTests
+cd ..

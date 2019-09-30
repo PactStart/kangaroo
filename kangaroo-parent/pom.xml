@@ -12,7 +12,7 @@
 
     <groupId>io.github.pactstart</groupId>
     <artifactId>kangaroo-parent</artifactId>
-    <version>1.0.1</version>
+    <version>1.0.2-SNAPSHOT</version>
     <packaging>pom</packaging>
 
     <name>kangaroo-parent</name>
@@ -45,13 +45,13 @@
         <!-- basedao dependencies-->
         <junit.version>4.12</junit.version>
         <mysql.version>5.1.43</mysql.version>
-        <mybatis.version>3.4.0</mybatis.version>
-        <mybatis-springboot.version>1.1.1</mybatis-springboot.version>
-        <mapper.version>3.4.0</mapper.version>
-        <mapper-springboot.version>1.1.1</mapper-springboot.version>
-        <pagehelper-springboot.version>1.1.1</pagehelper-springboot.version>
-        <druid.version>1.1.2</druid.version>
-        <druid-springboot.version>1.1.5</druid-springboot.version>
+        <mybatis.version>3.5.1</mybatis.version>
+        <mybatis-springboot.version>2.0.1</mybatis-springboot.version>
+        <mapper.version>3.4.6</mapper.version>
+        <mapper-springboot.version>2.1.5</mapper-springboot.version>
+        <pagehelper-springboot.version>1.2.12</pagehelper-springboot.version>
+        <druid.version>1.1.17</druid.version>
+        <druid-springboot.version>1.1.17</druid-springboot.version>
         <!-- end of basedao dependencies-->
         <!-- really favorite tools -->
         <lombok.version>1.16.12</lombok.version>
@@ -77,22 +77,22 @@
         <log4j12.version>1.7.25</log4j12.version>
         <!-- end of logging -->
         <!-- validator -->
-        <validation-api.version>1.1.0.Final</validation-api.version>
-        <hibernate-validator.version>5.2.4.Final</hibernate-validator.version>
+        <validation-api.version>2.0.1.Final</validation-api.version>
+        <hibernate-validator.version>6.0.17.Final</hibernate-validator.version>
         <!-- http client -->
         <httpclient.version>4.5.2</httpclient.version>
         <httpmime.version>4.5.2</httpmime.version>
         <!-- jackson -->
-        <jackson.version>2.8.9</jackson.version>
+        <jackson.version>2.9.9</jackson.version>
         <!-- jedis -->
-        <jedis.version>2.9.0</jedis.version>
+        <jedis.version>2.9.3</jedis.version>
         <!-- servlet -->
         <servlet.version>3.1.0</servlet.version>
         <!-- spring related -->
-        <spring.version>4.3.10.RELEASE</spring.version>
-        <springboot.version>1.5.6.RELEASE</springboot.version>
-        <spring-data-redis.version>1.8.6.RELEASE</spring-data-redis.version>
-        <spring-session-data-redis.version>1.3.1.RELEASE</spring-session-data-redis.version>
+        <spring.version>5.1.9.RELEASE</spring.version>
+        <springboot.version>2.1.8.RELEASE</springboot.version>
+        <spring-data-redis.version>2.1.10.RELEASE</spring-data-redis.version>
+        <spring-session-data-redis.version>2.1.8.RELEASE</spring-session-data-redis.version>
     </properties>
 
     <dependencyManagement>
@@ -150,7 +150,12 @@
             <dependency>
                 <groupId>io.github.pactstart</groupId>
                 <artifactId>pay-spring-boot-starter</artifactId>
-                <version>1.0.3</version>
+                <version>1.0.4-SNAPSHOT</version>
+            </dependency>
+            <dependency>
+                <groupId>io.github.pactstart</groupId>
+                <artifactId>kangaroo-simple-web-framework</artifactId>
+                <version>1.0.6-SNAPSHOT</version>
             </dependency>
             <dependency>
                 <groupId>io.github.pactstart</groupId>
@@ -165,7 +170,7 @@
             <dependency>
                 <groupId>io.github.pactstart</groupId>
                 <artifactId>aliyun-sts-spring-boot-starter</artifactId>
-                <version>1.0.0</version>
+                <version>${project.version}</version>
             </dependency>
             <dependency>
                 <groupId>io.github.pactstart</groupId>
@@ -199,11 +204,6 @@
             </dependency>
             <dependency>
                 <groupId>io.github.pactstart</groupId>
-                <artifactId>kangaroo-simple-web-framework</artifactId>
-                <version>1.0.5</version>
-            </dependency>
-            <dependency>
-                <groupId>io.github.pactstart</groupId>
                 <artifactId>kangaroo-web-admin</artifactId>
                 <version>${project.version}</version>
             </dependency>
@@ -227,6 +227,26 @@
             <dependency>
                 <groupId>org.springframework</groupId>
                 <artifactId>spring-webmvc</artifactId>
+                <version>${spring.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-core</artifactId>
+                <version>${spring.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-beans</artifactId>
+                <version>${spring.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-context</artifactId>
+                <version>${spring.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-context</artifactId>
                 <version>${spring.version}</version>
             </dependency>
             <!-- spring data-->
@@ -397,6 +417,17 @@
                 <groupId>org.slf4j</groupId>
                 <artifactId>slf4j-log4j12</artifactId>
                 <version>${log4j12.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>ch.qos.logback</groupId>
+                <artifactId>logback-classic</artifactId>
+                <version>1.1.11</version>
+            </dependency>
+            <!-- jdom -->
+            <dependency>
+                <groupId>jdom</groupId>
+                <artifactId>jdom</artifactId>
+                <version>1.1</version>
             </dependency>
             <!--mybatis-->
             <dependency>
