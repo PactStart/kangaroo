@@ -53,7 +53,7 @@
         <guava.version>23.0</guava.version>
         <fastjson.version>1.2.11</fastjson.version>
         <gson.version>2.3</gson.version>
-        <commons-collections.version>3.2.1</commons-collections.version>
+        <commons-collections.version>3.2.2</commons-collections.version>
         <commons-lang3.version>3.6</commons-lang3.version>
         <commons-io.version>2.4</commons-io.version>
         <dozer.version>5.5.1</dozer.version>
