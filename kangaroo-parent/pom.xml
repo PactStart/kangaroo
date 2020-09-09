@@ -78,7 +78,7 @@
         <!-- end of logging -->
         <!-- validator -->
         <validation-api.version>1.1.0.Final</validation-api.version>
-        <hibernate-validator.version>5.2.4.Final</hibernate-validator.version>
+        <hibernate-validator.version>5.3.6.Final</hibernate-validator.version>
         <!-- http client -->
         <httpclient.version>4.5.2</httpclient.version>
         <httpmime.version>4.5.2</httpmime.version>
