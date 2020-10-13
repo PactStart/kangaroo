@@ -38,7 +38,7 @@
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
         <!-- basedao dependencies-->
-        <junit.version>4.12</junit.version>
+        <junit.version>4.13.1</junit.version>
         <mysql.version>5.1.43</mysql.version>
         <mybatis.version>3.4.0</mybatis.version>
         <mybatis-springboot.version>1.1.1</mybatis-springboot.version>
