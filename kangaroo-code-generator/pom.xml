@@ -18,7 +18,7 @@
 
     <properties>
         <mapper.version>3.4.0</mapper.version>
-        <mysql.version>5.1.43</mysql.version>
+        <mysql.version>8.0.28</mysql.version>
     </properties>
 
     <build>
