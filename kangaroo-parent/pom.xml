@@ -69,7 +69,7 @@
         <everit.version>1.9.0</everit.version>
         <dom4j.version>2.0.1</dom4j.version>
         <jodd.version>3.7.1</jodd.version>
-        <poi.version>3.17</poi.version>
+        <poi.version>4.1.1</poi.version>
         <googleauth.version>1.1.5</googleauth.version>
         <!-- end of really favorite tools -->
         <!-- logging -->
